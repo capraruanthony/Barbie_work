@@ -1,0 +1,33 @@
+
+barbiefr.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Barbies
+  rotate: false
+  xy: 1, 503
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+elsa
+  rotate: false
+  xy: 1, 1
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+snow
+  rotate: false
+  xy: 503, 503
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1
+snowpile
+  rotate: false
+  xy: 503, 1
+  size: 500, 500
+  orig: 500, 500
+  offset: 0, 0
+  index: -1

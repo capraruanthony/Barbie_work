@@ -6,7 +6,9 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.TextureArray;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
@@ -36,7 +38,7 @@ import Scenes.Hud;
 // PlayScreen class implements the Screen interface and represents the main game screen
 public class PlayScreen implements Screen {
     private BARBIE game; // Reference to the main game class
-    Texture texture;
+    private TextureAtlas atlas;
     private OrthographicCamera gamecam; //gamecam is what follows along our game world and
                                         // what the viewport actually displays
     private Viewport gamePort; // Viewport for displaying the game world
@@ -56,6 +58,8 @@ public class PlayScreen implements Screen {
 
     // Constructor for initializing the PlayScreen
     public PlayScreen(BARBIE game){
+        atlas = new TextureAtlas("barbiefr");
+
         this.game = game;
         gamecam = new OrthographicCamera(); // Create an OrthographicCamera for following the game world
         gamePort = new FitViewport( BARBIE.V_WIDTH / BARBIE.PPM, BARBIE.V_HEIGHT / BARBIE.PPM, gamecam); // Create a FitViewport
@@ -76,9 +80,11 @@ public class PlayScreen implements Screen {
         new B2WorldCreator(world, map);
 
         //create barbie in our game world
-        player = new Barbie(world);
+        player = new Barbie(world, this);
+    }
 
-
+    public TextureAtlas getAtlas(){
+        return atlas;
     }
     @Override
     public void show() {
@@ -125,6 +131,11 @@ public class PlayScreen implements Screen {
 
         //render our Box2DDebugLines
         b2dr.render(world, gamecam.combined);
+
+        //game.batch.setProjectionMatrix(gamecam.combined);
+        //game.batch.begin();
+        //player.draw(game.batch);
+        //game.batch.end();
 
         // Set the projection matrix of the game batch to that of the HUD's camera
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);

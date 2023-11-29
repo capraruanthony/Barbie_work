@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="83">
+ <tileset firstgid="1" source="Custom Edited - Mario Customs - Super Mario Bros Tiles New Super Mario Bros-Style.tsx"/>
+ <layer id="2" name="graphics" width="240" height="13">
+  <data encoding="base64" compression="zlib">
+   eJztWElSVEEQrUOouHOiQTBcQXMCRWXn7CnUvdNO1LZPoq2yExXQQ6inQK/g+9FdEUmRUw2NbYSLF12/flVW5st8WR8GqyG8BgaT3+FkPCBz0njIzHPPnG3pTG5vLbi4NB+4+NKxZI+bt/jUuJDsWRynfnpjSG1ZaJ2r0tg9dqRa9tR0bRzTAlc/kp4s/Woxa71B2jft2KXa1vTL+a5pRIvV0m/uObn6tXTv1a50VoucSMiNx5tnLQ9W/C307u0Hmt8eXyz9crXp0bi1pibmWv1yvJTWiqVf611L/ZZw3rq3cjY1jqXYvHmw6pjzQVovrWmlaU/9Wvzl6pfbW1s3Od90JWu9+i3R0lHpl87l7Mnhu0UtSva19ZxfNfr19r4W+mtRvx79pXmX9GnxIunXssn5uDlBro69sXvH/7p+03eWfrka1OY4rVn9IPXVqmNPPmo51fy2Ysr1OaeWNI6moV/tvvVo3epHNb3sv34Pv8upY6s/evpBST49ObQ4lWo4zY0Wp7S+hX6lvZyOS/Xr1aSmx5p8tqiFaet3vxfCL+B3z+5zLfQrcW5pKicX3Ps0ztYardGvxIeHO6v3eO5L+kx50u7Ukrva8vX56vgb9gXwEniVUQc5vU7yQ6sJTw/ktCT1gVxdWPY9ui3VbByneeHuVI0rac/O4mG+pb50lPB+g3A1K3Gj1ZSkT2mOA7de0hW39tFSCI+BJ8BT4NnSwb8rUx3SPJ3qh3AaOAOcBc4B80APWOjL+7hn6pvUuwfO91zvKLkPPJq1at+6E6hvaS/mzvL0kziv5WW/5+svKTrtdijhjovTo0fOLrWRc/92c1LNpmdq8UnccT5odc3l06urbu2x5RCOAyeAOeDk8li/W32ey24+/u/oI8bbwCfgM/AF2AF2gT3g+0oIP4CfKzIX9CzpztX6Judf90zP1nqoxjm1IZ2VnkNzJH2PeO54rodqoH5YeZE4l/il926Ehx9JA1y+uO+vlFtak1ZNxPdcDUrcSHXOcaXVlOebVOoLHaz8URsj6PUd8B74AGxN9LuxNv59g/VvgVH/4HyH6xjfAG4Ct4DbwB3gLnAPuI81D4CHk7Po3nScxjViOON6Urom2krP7hDj4LikccZ5zsYwOStdw/kY4+TOoPYkri/h9zKwvib7TP2w8iJxrvFLtRv1S8+MduYu4g6YgNqXajb6QddyMQ0LfJZ8lLih+6RaTXOU5mfT8ImeIeXVyh9du34hhCvAVeAasAH05uuxACwC5xvYam0v1liOfW7P3+Ch1mYrfzQ7OVyV+DOrtVVrh/KWa2uRYLcB9oCvwLcZtBd5yrHP7bGQ5rUFD7VctOJRs5PDVYk/s1pbtXYob7m2qH7/AFKzxqs=
+  </data>
+ </layer>
+ <objectgroup id="3" name="bricks">
+  <object id="30" x="112.104" y="128.053" width="47.8491" height="15.494"/>
+  <object id="31" x="336.766" y="128.965" width="47.3934" height="14.5826"/>
+  <object id="32" x="401.021" y="128.053" width="46.482" height="15.9497"/>
+  <object id="33" x="512.213" y="128.053" width="47.3934" height="15.9497"/>
+  <object id="34" x="639.81" y="128.053" width="48.3048" height="15.9497"/>
+  <object id="35" x="848.524" y="128.053" width="45.1148" height="15.9497"/>
+  <object id="36" x="929.639" y="113.015" width="44.6591" height="14.1269"/>
+  <object id="37" x="1263.67" y="145.37" width="46.0262" height="10.9369"/>
+  <object id="38" x="1312.43" y="113.471" width="46.9377" height="13.6712"/>
+  <object id="39" x="3503.01" y="95.2424" width="47.8491" height="15.9497"/>
+  <object id="40" x="3424.63" y="128.509" width="46.482" height="14.5826"/>
+  <object id="41" x="3216.82" y="128.965" width="46.482" height="15.0383"/>
+  <object id="42" x="2704.16" y="128.509" width="48.3048" height="15.9497"/>
+  <object id="43" x="2400.66" y="129.42" width="79.2927" height="14.1269"/>
+  <object id="44" x="2320.45" y="96.6096" width="46.9377" height="14.1269"/>
+  <object id="45" x="2255.29" y="112.104" width="48.7605" height="16.8611"/>
+  <object id="46" x="1391.72" y="96.6096" width="47.3934" height="15.0383"/>
+  <object id="47" x="1472.84" y="128.509" width="78.837" height="15.494"/>
+  <object id="48" x="1936.29" y="128.509" width="63.7988" height="15.9497"/>
+  <object id="49" x="2176.45" y="113.471" width="14.5826" height="63.3431"/>
+  <object id="50" x="2153.66" y="154.94"/>
+  <object id="51" x="2170.07" y="138.99"/>
+  <object id="52" x="2129.51" y="161.32" width="61.0645" height="15.494"/>
+ </objectgroup>
+ <objectgroup id="4" name="coins"/>
+ <objectgroup id="5" name="ground">
+  <object id="19" x="0" y="176.358" width="598.797" height="28.7094"/>
+  <object id="20" x="598.797" y="176.814" width="297.12" height="29.1651"/>
+  <object id="21" x="927.816" y="175.902" width="176.814" height="32.3551"/>
+  <object id="22" x="1136.53" y="176.358" width="621.127" height="29.6209"/>
+  <object id="23" x="1757.66" y="176.814" width="487.149" height="27.798"/>
+  <object id="25" x="2244.8" y="176.358" width="58.786" height="30.5323"/>
+  <object id="26" x="2336.4" y="176.358" width="560.973" height="30.5323"/>
+  <object id="27" x="2896.92" y="176.358" width="582.392" height="30.5323"/>
+  <object id="28" x="3584.12" y="176.814" width="256.106" height="30.0766"/>
+  <object id="29" x="3477.94" y="176.358" width="73.8243" height="29.1651"/>
+ </objectgroup>
+ <objectgroup id="7" name="pipes">
+  <object id="53" x="300.31" y="152.661" width="26.4309" height="23.241"/>
+  <object id="54" x="803.864" y="161.775"/>
+  <object id="55" x="813.89" y="162.231"/>
+  <object id="56" x="804.776" y="167.7"/>
+  <object id="57" x="812.978" y="168.155"/>
+  <object id="58" x="1076.83" y="162.231"/>
+  <object id="59" x="1085.03" y="162.231"/>
+  <object id="60" x="1076.83" y="176.358"/>
+  <object id="61" x="1084.58" y="176.358"/>
+  <object id="62" x="2884.16" y="161.775"/>
+  <object id="63" x="2894.19" y="161.775"/>
+  <object id="64" x="2884.16" y="174.991"/>
+  <object id="65" x="2893.27" y="174.991"/>
+  <object id="66" x="2612.1" y="161.32"/>
+  <object id="67" x="2621.22" y="162.231"/>
+  <object id="68" x="2612.1" y="174.079"/>
+  <object id="69" x="2621.22" y="174.991"/>
+  <object id="70" x="2228.86" y="161.32"/>
+  <object id="71" x="2237.51" y="161.775"/>
+  <object id="72" x="2229.31" y="173.624"/>
+  <object id="73" x="2237.97" y="174.991"/>
+  <object id="74" x="1764.04" y="161.32"/>
+  <object id="75" x="1773.15" y="160.864"/>
+  <object id="76" x="1763.58" y="173.624"/>
+  <object id="77" x="1773.61" y="174.991"/>
+  <object id="78" x="1220.38" y="161.32"/>
+  <object id="79" x="1229.49" y="161.32"/>
+  <object id="80" x="1220.83" y="178.181"/>
+  <object id="81" x="1220.83" y="178.181"/>
+  <object id="82" x="1228.13" y="177.725"/>
+ </objectgroup>
+</map>

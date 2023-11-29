@@ -1,0 +1,47 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "barbiemap.tmx",
+    "expandedProjectPaths": [
+    ],
+    "fileStates": {
+        "Custom Edited - Mario Customs - Super Mario Bros Tiles New Super Mario Bros-Style.tsx": {
+            "scaleInDock": 1.0411,
+            "scaleInEditor": 0.54
+        },
+        "barbiemap.tmx": {
+            "scale": 2.79,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 1889.9641577060934,
+                "y": 143.5483870967742
+            }
+        }
+    },
+    "last.imagePath": "/Users/samkraft/Downloads",
+    "map.height": 13,
+    "map.lastUsedFormat": "tmx",
+    "map.layerDataFormat": "3",
+    "map.renderOrder": "3",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "map.width": 240,
+    "openFiles": [
+        "barbiemap.tmx",
+        "Custom Edited - Mario Customs - Super Mario Bros Tiles New Super Mario Bros-Style.tsx"
+    ],
+    "project": "barbie game.tiled-project",
+    "recentFiles": [
+        "Custom Edited - Mario Customs - Super Mario Bros Tiles New Super Mario Bros-Style.tsx",
+        "barbiemap.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.margin": 1,
+    "tileset.spacing": 2,
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

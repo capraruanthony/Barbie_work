@@ -9,6 +9,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
 
+import Screens.OpeningScreen;
 import Screens.PlayScreen;
 
 public class BARBIE extends Game {
@@ -27,7 +28,7 @@ public class BARBIE extends Game {
 		manager.load("barbie_music.ogg", Music.class);
 		manager.finishLoading();
 
-		setScreen(new PlayScreen(this));
+		setScreen(new OpeningScreen(this));
 	}
 
 	@Override

@@ -3,6 +3,7 @@ package Screens;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
@@ -55,10 +56,12 @@ public class PlayScreen implements Screen {
 
     private Barbie player;
 
+    private Music music;
+
 
     // Constructor for initializing the PlayScreen
     public PlayScreen(BARBIE game){
-        atlas = new TextureAtlas("barbiefr");
+        atlas = new TextureAtlas("barbiefr.pack");
 
         this.game = game;
         gamecam = new OrthographicCamera(); // Create an OrthographicCamera for following the game world
@@ -81,6 +84,10 @@ public class PlayScreen implements Screen {
 
         //create barbie in our game world
         player = new Barbie(world, this);
+
+        music = BARBIE.manager.get("barbie_music.ogg", Music.class);
+        music.setLooping(true);
+        music.play();
     }
 
     public TextureAtlas getAtlas(){
@@ -91,10 +98,11 @@ public class PlayScreen implements Screen {
 
     }
 
+
     public void handleInput(float dt){
 
         if (true && Gdx.input.isKeyPressed((Input.Keys.UP))) {
-           player.b2body.applyLinearImpulse(new Vector2(0, 14f), player.b2body.getWorldCenter(), true);
+           player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2){
             player.b2body.applyLinearImpulse(new Vector2(1f, 0), player.b2body.getWorldCenter(), true);
@@ -110,6 +118,10 @@ public class PlayScreen implements Screen {
 
         //60 times a second
         world.step(1/60f, 6, 2 );
+
+        player.update(dt);
+        hud.update(dt);
+
 
         gamecam.position.x = player.b2body.getPosition().x;
         //update the gamecam with correct cordinates after change
@@ -132,10 +144,10 @@ public class PlayScreen implements Screen {
         //render our Box2DDebugLines
         b2dr.render(world, gamecam.combined);
 
-        //game.batch.setProjectionMatrix(gamecam.combined);
-        //game.batch.begin();
-        //player.draw(game.batch);
-        //game.batch.end();
+        game.batch.setProjectionMatrix(gamecam.combined);
+        game.batch.begin();
+        player.draw(game.batch);
+        game.batch.end();
 
         // Set the projection matrix of the game batch to that of the HUD's camera
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);

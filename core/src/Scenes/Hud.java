@@ -21,7 +21,9 @@ public class Hud implements Disposable {
                               // gameworld moves we want our hud to stay the same
     private Integer worldTimer; // Timer for the game world
     private float timeCount; // Timer for tracking elapsed time
+
     private Integer score; // Player's score
+    private float scoreCount;
 
     // Labels for displaying countdown, score, level, and other information
     Label countdownLabel;
@@ -66,8 +68,35 @@ public class Hud implements Disposable {
         stage.addActor(table); //adding the table to stage
     }
 
+    public void update(float dt){
+      timeCount += dt;
+      if (timeCount >= 1){
+          worldTimer--;
+          countdownLabel.setText(String.format("%03d", worldTimer));
+          timeCount = 0;
+      }
+      scoreCount += dt;
+      if (scoreCount >= 1){
+          score = score+ 10;
+          scoreLabel.setText(String.format("%06d", score));
+          scoreCount = 0;
+      }
+
+
+    }
+
+
     @Override
     public void dispose() {
         stage.dispose();
     }
 }
+
+
+
+
+
+
+
+
+

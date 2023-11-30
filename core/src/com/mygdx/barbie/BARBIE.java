@@ -2,6 +2,9 @@ package com.mygdx.barbie;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Game;
+import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.assets.loaders.MusicLoader;
+import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.ScreenUtils;
@@ -14,17 +17,28 @@ public class BARBIE extends Game {
 	public static final float PPM = 100;
 	public SpriteBatch batch;
 
+	public static AssetManager manager;
+
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		manager = new AssetManager();
+		manager.load("barbie_music.ogg", Music.class);
+		manager.finishLoading();
+
 		setScreen(new PlayScreen(this));
 	}
 
 	@Override
 	public void render () {
 		super.render();
+
 	}
 	
 
 }
+
+
+
+

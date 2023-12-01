@@ -24,6 +24,7 @@ import com.badlogic.gdx.physics.box2d.Box2DDebugRenderer;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.PolygonShape;
 import com.badlogic.gdx.physics.box2d.World;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
@@ -60,6 +61,7 @@ public class PlayScreen implements Screen {
     private Music music;
 
     private Snowman snowman;
+    private Array<Snowman> snowmen;
 
 
     // Constructor for initializing the PlayScreen
@@ -74,7 +76,7 @@ public class PlayScreen implements Screen {
 
         //load the map and setup the map renderer
         maploader = new TmxMapLoader();
-        map = maploader.load("barbie1.tmx"); // this is where the error is
+        map = maploader.load("barbie1.tmx"); // changed be carefull
         renderer = new OrthogonalTiledMapRenderer(map, 1 / BARBIE.PPM);
         //initially set our gamcam to be centered correctly at the start of of map
         gamecam.position.set(gamePort.getWorldWidth() / 2, gamePort.getWorldHeight() / 2, 0);
@@ -93,7 +95,11 @@ public class PlayScreen implements Screen {
         music.setLooping(true);
         music.play();
 
-        snowman = new Snowman(this, .32f, .32f);
+        //snowman = new Snowman(this, 5.3f, .32f);
+        snowmen = new Array<>();
+        for (int i = 0; i < 5; i++) { // You can adjust the number of snowmen as needed
+            snowmen.add(new Snowman(this, i * 2.5f, 0.32f)); // Adjust the positions as needed
+        }
     }
 
     public TextureAtlas getAtlas(){
@@ -126,7 +132,10 @@ public class PlayScreen implements Screen {
         world.step(1/60f, 6, 2 );
 
         player.update(dt);
-        snowman.update(dt);
+        //snowman.update(dt);
+        for (Snowman snowman : snowmen) {
+            snowman.update(dt);
+        }
         hud.update(dt);
 
 
@@ -156,7 +165,10 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         player.draw(game.batch);
-        snowman.draw(game.batch);
+        //snowman.draw(game.batch);
+        for (Snowman snowman : snowmen) {
+            snowman.draw(game.batch);
+        }
         game.batch.end();
 
         // Set the projection matrix of the game batch to that of the HUD's camera

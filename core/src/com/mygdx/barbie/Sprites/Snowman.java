@@ -2,6 +2,7 @@ package com.mygdx.barbie.Sprites;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.BodyDef;
@@ -34,11 +35,14 @@ public class Snowman extends Enemy{
         Gdx.app.log("Snowman", "Update method called");
         stateTime += dt;
         if (setToDestroy && !destroyed){
+            Gdx.app.log("Snowman", "if called");
             world.destroyBody(b2body);
             destroyed = true;
             setRegion(new TextureRegion(screen.getAtlas().findRegion("pile"), 0, 0, 17, 17));
+            stateTime = 0;
         }
         else if(!destroyed) {
+            b2body.setLinearVelocity(velocity);
             setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
             setRegion((TextureRegion) walkAnimation.getKeyFrame(stateTime, true)); // Explicit cast to TextureRegion
         }
@@ -76,9 +80,13 @@ public class Snowman extends Enemy{
         fdef.shape = head;
         fdef.restitution = 0.5f;
         fdef.filter.categoryBits = BARBIE.ENEMY_HEAD_BIT;
-        b2body.createFixture(fdef);
+        b2body.createFixture(fdef).setUserData(this);
     }
 
+    public void draw(Batch batch){
+        if (!destroyed || stateTime < 1)
+            super.draw(batch);
+    }
     @Override
     public void hitOnHead() {
         Gdx.app.log("Snowman", "Hit on head");

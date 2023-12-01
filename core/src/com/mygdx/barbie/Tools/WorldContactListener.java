@@ -39,8 +39,17 @@ public class WorldContactListener implements ContactListener {
             case BARBIE.ENEMY_HEAD_BIT | BARBIE.BARBIE_BIT:
                 if(fixA.getFilterData().categoryBits == BARBIE.ENEMY_HEAD_BIT)
                     ((Enemy)fixA.getUserData()).hitOnHead();
-                else if (fixB.getFilterData().categoryBits == BARBIE.ENEMY_HEAD_BIT)
+                else
                     ((Enemy)fixB.getUserData()).hitOnHead();
+                break;
+            case BARBIE.ENEMY_BIT | BARBIE.OBJECT_BIT:
+                if(fixA.getFilterData().categoryBits == BARBIE.ENEMY_BIT)
+                    ((Enemy)fixA.getUserData()).reverseVelocity(true, false);
+                else
+                    ((Enemy)fixB.getUserData()).reverseVelocity(true, false);
+                break;
+            case BARBIE.BARBIE_BIT | BARBIE.ENEMY_BIT:
+                Gdx.app.log("Barbie", "died");
         }
     }
 

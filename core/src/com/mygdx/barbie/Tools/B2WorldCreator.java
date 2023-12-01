@@ -12,11 +12,16 @@ import com.badlogic.gdx.physics.box2d.World;
 import com.mygdx.barbie.BARBIE;
 import com.mygdx.barbie.Sprites.Brick;
 import com.mygdx.barbie.Sprites.Coin;
+import com.mygdx.barbie.Sprites.Snowman;
+
+import java.lang.reflect.Array;
 
 import Screens.PlayScreen;
 
 public class B2WorldCreator {
+
     public B2WorldCreator(PlayScreen screen){
+
         World world = screen.getWorld();
         TiledMap map = screen.getMap();
         BodyDef bdef = new BodyDef();
@@ -79,6 +84,7 @@ public class B2WorldCreator {
             fdef.shape = shape;
             body.createFixture(fdef);
         }
+
 
 
     }

@@ -97,8 +97,8 @@ public class PlayScreen implements Screen {
 
         //snowman = new Snowman(this, 5.3f, .32f);
         snowmen = new Array<>();
-        for (int i = 0; i < 5; i++) { // You can adjust the number of snowmen as needed
-            snowmen.add(new Snowman(this, i * 2.5f, 0.32f)); // Adjust the positions as needed
+        for (int i = 1; i < 7; i++) { // You can adjust the number of snowmen as needed
+            snowmen.add(new Snowman(this, i * 2.7f, 0.32f)); // Adjust the positions as needed
         }
     }
 

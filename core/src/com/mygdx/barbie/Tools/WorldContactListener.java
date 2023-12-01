@@ -13,11 +13,7 @@ import com.mygdx.barbie.Sprites.Enemy;
 import com.mygdx.barbie.Sprites.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener {
-    private Barbie barbie;
 
-    public WorldContactListener(Barbie barbie) {
-        this.barbie = barbie;
-    }
 
     @Override
     public void beginContact(Contact contact) {

@@ -30,6 +30,8 @@ public class Barbie extends Sprite {
 
     private boolean canJump;
 
+
+
     public Barbie(PlayScreen screen){
         super(screen.getAtlas().findRegion("barbie_newsize"));
         this.world = screen.getWorld();

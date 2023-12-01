@@ -32,6 +32,7 @@ import com.mygdx.barbie.BARBIE;
 import com.mygdx.barbie.Sprites.Barbie;
 import com.mygdx.barbie.Sprites.Snowman;
 import com.mygdx.barbie.Tools.B2WorldCreator;
+import com.mygdx.barbie.Tools.WorldContactListener;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
 
@@ -59,6 +60,7 @@ public class PlayScreen implements Screen {
     private Barbie player;
 
     private Music music;
+
 
     private Snowman snowman;
     private Array<Snowman> snowmen;
@@ -90,6 +92,7 @@ public class PlayScreen implements Screen {
         //create barbie in our game world
         player = new Barbie(this);
 
+        world.setContactListener(new WorldContactListener());
 
         music = BARBIE.manager.get("barbie_music.ogg", Music.class);
         music.setLooping(true);

@@ -25,13 +25,14 @@ public class BARBIE extends Game {
 
 	public static AssetManager manager;
 
-	
+	public static Music music;
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
 		manager = new AssetManager();
 		manager.load("barbie_music.ogg", Music.class);
 		manager.finishLoading();
+
 
 		setScreen(new PlayScreen(this));
 	}

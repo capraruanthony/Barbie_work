@@ -84,6 +84,7 @@ public class PlayScreen implements Screen {
 
         //create barbie in our game world
         player = new Barbie(world, this);
+        
 
         music = BARBIE.manager.get("barbie_music.ogg", Music.class);
         music.setLooping(true);
@@ -127,6 +128,8 @@ public class PlayScreen implements Screen {
         //update the gamecam with correct cordinates after change
          gamecam.update();
          renderer.setView(gamecam);  //only render what our gamecam can see
+
+
     }
 
     @Override

@@ -28,6 +28,8 @@ public class Barbie extends Sprite {
     private float stateTimer; //see how long you in a state
     private boolean runningRight;
 
+    private boolean canJump;
+
     public Barbie(World world, PlayScreen screen){
         super(screen.getAtlas().findRegion("barbie_newsize"));
         this.world = world;
@@ -50,11 +52,22 @@ public class Barbie extends Sprite {
         defineBarbie();
         setBounds(0, 0, 30 / BARBIE.PPM, 33 / BARBIE.PPM);  //fix this
         setRegion(barbieStand);
+
+        canJump = true;
+    }
+    public boolean canJump() {
+        return canJump;
+    }
+
+    public void setCanJump(boolean canJump) {
+        this.canJump = canJump;
     }
 
     public void update(float dt){
         setPosition(b2body.getPosition().x - getWidth() / 2, b2body.getPosition().y - getHeight() / 2);
         setRegion(getFrame(dt));
+
+
     }
 
     public TextureRegion getFrame(float dt){
@@ -109,6 +122,8 @@ public class Barbie extends Sprite {
         CircleShape shape = new CircleShape();
         shape.setRadius(7.5f / BARBIE.PPM);
         shape.setPosition(new Vector2(0, -7 / BARBIE.PPM));  // Adjust the Y-coordinate as needed
+        fdef.filter.categoryBits = BARBIE.BARBIE_BIT;
+        fdef.filter.maskBits = BARBIE.DEFAULT_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef);

@@ -30,9 +30,9 @@ public class Barbie extends Sprite {
 
     private boolean canJump;
 
-    public Barbie(World world, PlayScreen screen){
+    public Barbie(PlayScreen screen){
         super(screen.getAtlas().findRegion("barbie_newsize"));
-        this.world = world;
+        this.world = screen.getWorld();
         currentState = State.STANDING;
         previousState = State.STANDING;
         stateTimer = 0;
@@ -50,7 +50,7 @@ public class Barbie extends Sprite {
 
         barbieStand = new TextureRegion(getTexture(), 46 , 26 , 21 , 33); //fix this to put barbie just standing on the screen without animations
         defineBarbie();
-        setBounds(0, 0, 30 / BARBIE.PPM, 33 / BARBIE.PPM);  //fix this
+        setBounds(0, 0, 21 / BARBIE.PPM, 35 / BARBIE.PPM);  //fix this
         setRegion(barbieStand);
 
         canJump = true;
@@ -123,7 +123,10 @@ public class Barbie extends Sprite {
         shape.setRadius(7.5f / BARBIE.PPM);
         shape.setPosition(new Vector2(0, -7 / BARBIE.PPM));  // Adjust the Y-coordinate as needed
         fdef.filter.categoryBits = BARBIE.BARBIE_BIT;
-        fdef.filter.maskBits = BARBIE.DEFAULT_BIT;
+        fdef.filter.maskBits = BARBIE.GROUND_BIT|
+                BARBIE.ENEMY_BIT |
+                BARBIE.OBJECT_BIT |
+                BARBIE.ENEMY_HEAD_BIT;
 
         fdef.shape = shape;
         b2body.createFixture(fdef);

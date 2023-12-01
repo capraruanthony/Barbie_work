@@ -29,6 +29,7 @@ import com.badlogic.gdx.utils.viewport.StretchViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.barbie.BARBIE;
 import com.mygdx.barbie.Sprites.Barbie;
+import com.mygdx.barbie.Sprites.Snowman;
 import com.mygdx.barbie.Tools.B2WorldCreator;
 import com.sun.org.apache.xpath.internal.operations.Or;
 
@@ -58,6 +59,8 @@ public class PlayScreen implements Screen {
 
     private Music music;
 
+    private Snowman snowman;
+
 
     // Constructor for initializing the PlayScreen
     public PlayScreen(BARBIE game){
@@ -80,15 +83,17 @@ public class PlayScreen implements Screen {
                                                                 //if you want to sleep objects that are at rest
         b2dr = new Box2DDebugRenderer();
 
-        new B2WorldCreator(world, map);
+        new B2WorldCreator(this);
 
         //create barbie in our game world
-        player = new Barbie(world, this);
-        
+        player = new Barbie(this);
+
 
         music = BARBIE.manager.get("barbie_music.ogg", Music.class);
         music.setLooping(true);
         music.play();
+
+        snowman = new Snowman(this, .32f, .32f);
     }
 
     public TextureAtlas getAtlas(){
@@ -103,7 +108,7 @@ public class PlayScreen implements Screen {
     public void handleInput(float dt){
 
         if (true && Gdx.input.isKeyPressed((Input.Keys.UP))) {
-           player.b2body.applyLinearImpulse(new Vector2(0, 4f), player.b2body.getWorldCenter(), true);
+           player.b2body.applyLinearImpulse(new Vector2(0, 5f), player.b2body.getWorldCenter(), true);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2){
             player.b2body.applyLinearImpulse(new Vector2(1f, 0), player.b2body.getWorldCenter(), true);
@@ -121,6 +126,7 @@ public class PlayScreen implements Screen {
         world.step(1/60f, 6, 2 );
 
         player.update(dt);
+        snowman.update(dt);
         hud.update(dt);
 
 
@@ -150,6 +156,7 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(gamecam.combined);
         game.batch.begin();
         player.draw(game.batch);
+        snowman.draw(game.batch);
         game.batch.end();
 
         // Set the projection matrix of the game batch to that of the HUD's camera
@@ -162,6 +169,12 @@ public class PlayScreen implements Screen {
         gamePort.update(width,height); // Update the gamePort to handle screen resizing
     }
 
+    public TiledMap getMap(){
+        return map;
+    }
+    public World getWorld(){
+        return world;
+    }
     @Override
     public void pause() {
 

@@ -13,8 +13,12 @@ import com.mygdx.barbie.BARBIE;
 import com.mygdx.barbie.Sprites.Brick;
 import com.mygdx.barbie.Sprites.Coin;
 
+import Screens.PlayScreen;
+
 public class B2WorldCreator {
-    public B2WorldCreator(World world, TiledMap map){
+    public B2WorldCreator(PlayScreen screen){
+        World world = screen.getWorld();
+        TiledMap map = screen.getMap();
         BodyDef bdef = new BodyDef();
         PolygonShape shape = new PolygonShape();
         FixtureDef fdef = new FixtureDef(); //defining a fixture so that you can add a body
@@ -45,6 +49,7 @@ public class B2WorldCreator {
 
             shape.setAsBox(rect.getWidth() / 2 / BARBIE.PPM, rect.getHeight() / 2 / BARBIE.PPM);
             fdef.shape = shape;
+            fdef.filter.categoryBits = BARBIE.OBJECT_BIT;
             body.createFixture(fdef);
         }
 

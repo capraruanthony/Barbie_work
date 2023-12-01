@@ -1,0 +1,47 @@
+
+Barbie_Stuff.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+princess
+  rotate: false
+  xy: 1, 20
+  size: 20, 40
+  orig: 20, 40
+  offset: 0, 0
+  index: -1
+barbie_run_newsize
+  rotate: false
+  xy: 23, 27
+  size: 22, 33
+  orig: 22, 33
+  offset: 0, 0
+  index: -1
+barbie_newsize
+  rotate: false
+  xy: 47, 27
+  size: 21, 33
+  orig: 21, 33
+  offset: 0, 0
+  index: -1
+barbie_run2_newsize
+  rotate: false
+  xy: 70, 27
+  size: 20, 33
+  orig: 20, 33
+  offset: 0, 0
+  index: -1
+pile
+  rotate: false
+  xy: 1, 1
+  size: 17, 17
+  orig: 17, 17
+  offset: 0, 0
+  index: -1
+snowman
+  rotate: false
+  xy: 92, 43
+  size: 16, 17
+  orig: 16, 17
+  offset: 0, 0
+  index: -1

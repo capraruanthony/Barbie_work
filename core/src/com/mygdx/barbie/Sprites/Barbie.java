@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
@@ -28,7 +29,7 @@ public class Barbie extends Sprite {
     private boolean runningRight;
 
     public Barbie(World world, PlayScreen screen){
-        super(screen.getAtlas().findRegion("Barbies"));
+        super(screen.getAtlas().findRegion("barbie_newsize"));
         this.world = world;
         currentState = State.STANDING;
         previousState = State.STANDING;
@@ -36,18 +37,18 @@ public class Barbie extends Sprite {
         runningRight = true;
 
         Array<TextureRegion> frames = new Array<TextureRegion>();
-        frames.add(new TextureRegion(getTexture(), 0,  900, 18, 940)); //fix this first two points is the start
+        frames.add(new TextureRegion(getTexture(), 70,  27, 20, 33)); //fix this first two points is the start
                                                         // of the top left of the image then the other two go to the bottom right of the image
         barbieRun = new Animation(0.2f, frames);
         frames.clear();
 
-        frames.add(new TextureRegion(getTexture(), 30,  900, 18, 940)); //fix this first two points is the start
+        frames.add(new TextureRegion(getTexture(), 23,  27, 22, 33)); //fix this first two points is the start
         // of the top left of the image then the other two go to the bottom right of the image
         barbieJump = new Animation(0.2f, frames);
 
-        barbieStand = new TextureRegion(getTexture(), 0 , 502 , 18 , 525); //fix this to put barbie just standing on the screen without animations
+        barbieStand = new TextureRegion(getTexture(), 46 , 26 , 21 , 33); //fix this to put barbie just standing on the screen without animations
         defineBarbie();
-        setBounds(0, 0, 19 / BARBIE.PPM, 12 / BARBIE.PPM);  //fix this
+        setBounds(0, 0, 30 / BARBIE.PPM, 33 / BARBIE.PPM);  //fix this
         setRegion(barbieStand);
     }
 
@@ -100,14 +101,14 @@ public class Barbie extends Sprite {
     }
     public void defineBarbie() {
         BodyDef bdef = new BodyDef();
-        bdef.position.set(32 / BARBIE.PPM, 32 / BARBIE.PPM);
+        bdef.position.set(32 / BARBIE.PPM, 50 / BARBIE.PPM);
         bdef.type = BodyDef.BodyType.DynamicBody;
         b2body = world.createBody(bdef);
 
         FixtureDef fdef = new FixtureDef();
         CircleShape shape = new CircleShape();
-        shape.setRadius(5 / BARBIE.PPM);
-
+        shape.setRadius(7.5f / BARBIE.PPM);
+        shape.setPosition(new Vector2(0, -7 / BARBIE.PPM));  // Adjust the Y-coordinate as needed
 
         fdef.shape = shape;
         b2body.createFixture(fdef);

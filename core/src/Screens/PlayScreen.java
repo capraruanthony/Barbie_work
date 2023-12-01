@@ -61,7 +61,7 @@ public class PlayScreen implements Screen {
 
     // Constructor for initializing the PlayScreen
     public PlayScreen(BARBIE game){
-        atlas = new TextureAtlas("barbiefr.pack");
+        atlas = new TextureAtlas("Barbie_Stuff.pack");
 
         this.game = game;
         gamecam = new OrthographicCamera(); // Create an OrthographicCamera for following the game world

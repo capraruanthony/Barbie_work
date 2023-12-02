@@ -18,23 +18,26 @@ import java.lang.reflect.Array;
 
 import Screens.PlayScreen;
 
+// class responsible for creating Box2D bodies for various elements in the game world
 public class B2WorldCreator {
 
+    // constructor for B2WorldCreator, which initializes Box2D bodies for elements in the game world
     public B2WorldCreator(PlayScreen screen){
 
-        World world = screen.getWorld();
-        TiledMap map = screen.getMap();
+        World world = screen.getWorld();  // geting the Box2D world from the PlayScreen
+        TiledMap map = screen.getMap();  // getting the TiledMap from the PlayScreen
+
+        // define Box2D body, shape, and fixture for the objects in the map
         BodyDef bdef = new BodyDef();
         PolygonShape shape = new PolygonShape();
         FixtureDef fdef = new FixtureDef(); //defining a fixture so that you can add a body
         Body body;
 
-        //creating a body and fixture at every corresponding object like ground layer, brick.
-        //ground
+        // creating bodies and fixtures for objects in the "ground" layer of the map
         for(MapObject object: map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.type = BodyDef.BodyType.StaticBody;  // set the body type to StaticBody for static physics
             bdef.position.set((rect.getX() + rect.getWidth() / 2) / BARBIE.PPM, (rect.getY() + rect.getHeight() / 2) / BARBIE.PPM);
 
             body = world.createBody(bdef);
@@ -43,26 +46,27 @@ public class B2WorldCreator {
             fdef.shape = shape;
             body.createFixture(fdef);
         }
-        //pipe
+
+        // creating bodies and fixtures for objects in the "pipe" layer of the map
         for(MapObject object: map.getLayers().get(3).getObjects().getByType(RectangleMapObject.class)) {
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.type = BodyDef.BodyType.StaticBody;  // set the body type to StaticBody for static physics
             bdef.position.set((rect.getX() + rect.getWidth() / 2) / BARBIE.PPM, (rect.getY() + rect.getHeight() / 2) / BARBIE.PPM);
 
             body = world.createBody(bdef);
 
             shape.setAsBox(rect.getWidth() / 2 / BARBIE.PPM, rect.getHeight() / 2 / BARBIE.PPM);
             fdef.shape = shape;
-            fdef.filter.categoryBits = BARBIE.OBJECT_BIT;
+            fdef.filter.categoryBits = BARBIE.OBJECT_BIT;  // set the category bits for the fixture
             body.createFixture(fdef);
         }
 
-        //bricks
+        // creating bodies and fixtures for objects in the "bricks" layer of the map
         for(MapObject object: map.getLayers().get(5).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.type = BodyDef.BodyType.StaticBody;  // set the body type to StaticBody for static physics
             bdef.position.set((rect.getX() + rect.getWidth() / 2) / BARBIE.PPM, (rect.getY() + rect.getHeight() / 2) / BARBIE.PPM);
 
             body = world.createBody(bdef);
@@ -71,11 +75,12 @@ public class B2WorldCreator {
             fdef.shape = shape;
             body.createFixture(fdef);
         }
-        //coins(not sure if we are gonna do this)
+
+        // creating bodies and fixtures for objects in the "coins" layer of the map
         for(MapObject object: map.getLayers().get(4).getObjects().getByType(RectangleMapObject.class)){
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
 
-            bdef.type = BodyDef.BodyType.StaticBody;
+            bdef.type = BodyDef.BodyType.StaticBody;  // set the body type to StaticBody for static physics
             bdef.position.set((rect.getX() + rect.getWidth() / 2) / BARBIE.PPM, (rect.getY() + rect.getHeight() / 2) / BARBIE.PPM);
 
             body = world.createBody(bdef);
@@ -84,8 +89,5 @@ public class B2WorldCreator {
             fdef.shape = shape;
             body.createFixture(fdef);
         }
-
-
-
     }
 }

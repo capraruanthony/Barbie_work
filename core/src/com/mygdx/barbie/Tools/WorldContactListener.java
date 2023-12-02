@@ -14,7 +14,7 @@ import com.mygdx.barbie.Sprites.InteractiveTileObject;
 
 public class WorldContactListener implements ContactListener {
 
-
+    // called when two fixtures start colliding
     @Override
     public void beginContact(Contact contact) {
         Gdx.app.log("ContactListener", "Begin contact");
@@ -24,6 +24,7 @@ public class WorldContactListener implements ContactListener {
 
         int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
 
+        // handle head-on collisions with interactive tile objects
         if(fixA.getUserData() == "head" || fixB.getUserData() == "head"){
             Fixture head = fixA.getUserData() == "head" ? fixA : fixB;
             Fixture object = head == fixA ? fixB : fixA;
@@ -32,6 +33,7 @@ public class WorldContactListener implements ContactListener {
                 ((InteractiveTileObject) object.getUserData()).onHeadHit();
             }
         }
+        // switch statement to handle different collision scenarios based on category bits
         switch (cDef){
             case BARBIE.ENEMY_HEAD_BIT | BARBIE.BARBIE_BIT:
                 if(fixA.getFilterData().categoryBits == BARBIE.ENEMY_HEAD_BIT)

@@ -13,19 +13,19 @@ import com.badlogic.gdx.utils.viewport.FitViewport;
 import com.badlogic.gdx.utils.viewport.Viewport;
 import com.mygdx.barbie.BARBIE;
 
-// The Hud class is responsible for displaying the Heads-Up Display (HUD)
+// the Hud class is responsible for displaying the Heads-Up Display (HUD)
 // on the screen, which includes information like score, timer, and labels.
 public class Hud implements Disposable {
-    public Stage stage; // The Stage for holding HUD elements
+    public Stage stage; // the Stage for holding HUD elements
     private Viewport viewport; //we need another viewport because when our
                               // gameworld moves we want our hud to stay the same
-    private Integer worldTimer; // Timer for the game world
-    private float timeCount; // Timer for tracking elapsed time
+    private Integer worldTimer; // timer for the game world
+    private float timeCount; // timer for tracking elapsed time
 
-    private Integer score; // Player's score
+    private Integer score; // player's score
     private float scoreCount;
 
-    // Labels for displaying countdown, score, level, and other information
+    // labels for displaying countdown, score, level, and other information
     Label countdownLabel;
     Label scoreLabel;
     Label nameLabel;
@@ -43,12 +43,12 @@ public class Hud implements Disposable {
         viewport = new FitViewport(BARBIE.V_WIDTH, BARBIE.V_HEIGHT, new OrthographicCamera());
         stage = new Stage(viewport, sb);
 
-        // Create a table for organizing HUD elements
+        // create a table for organizing HUD elements
         Table table = new Table();
         table.top();    //making it at the top of our stage
         table.setFillParent(true); //the table is the size of our stage
 
-        // Create labels for countdown, score, level, and other informa tion
+        // create labels for countdown, score, level, and other informa tion
         countdownLabel = new Label(String.format("%03d", worldTimer), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         scoreLabel = new Label(String.format("%06d", score), new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         nameLabel = new Label("Level", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
@@ -56,7 +56,7 @@ public class Hud implements Disposable {
         levelLabel =new Label("1", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
         barbielabel = new Label("BARBIE", new Label.LabelStyle(new BitmapFont(), Color.BLACK));
 
-        // Add labels to the table with padding and expansion settings
+        // add labels to the table with padding and expansion settings
         table.add(barbielabel).expandX().padTop(5).align(Align.top);
         table.add(nameLabel).expandX().padTop(5).align(Align.top);
         table.add(timeLabel).expandX().padTop(5).align(Align.top);

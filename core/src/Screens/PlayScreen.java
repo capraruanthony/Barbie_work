@@ -116,14 +116,16 @@ public class PlayScreen implements Screen {
 
     public void handleInput(float dt){
 
-        if (true && Gdx.input.isKeyPressed((Input.Keys.UP))) {
-           player.b2body.applyLinearImpulse(new Vector2(0, 5f), player.b2body.getWorldCenter(), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2){
-            player.b2body.applyLinearImpulse(new Vector2(1f, 0), player.b2body.getWorldCenter(), true);
-        }
-        if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2){
-            player.b2body.applyLinearImpulse(new Vector2(-1f, 0), player.b2body.getWorldCenter(), true);
+        if(player.currentState != Barbie.State.DEAD) {
+            if (true && Gdx.input.isKeyPressed((Input.Keys.UP))) {
+                player.b2body.applyLinearImpulse(new Vector2(0, 5f), player.b2body.getWorldCenter(), true);
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.RIGHT) && player.b2body.getLinearVelocity().x <= 2) {
+                player.b2body.applyLinearImpulse(new Vector2(1f, 0), player.b2body.getWorldCenter(), true);
+            }
+            if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && player.b2body.getLinearVelocity().x >= -2) {
+                player.b2body.applyLinearImpulse(new Vector2(-1f, 0), player.b2body.getWorldCenter(), true);
+            }
         }
     }
     //this is where were gonna do all the updating of the world like clicking on the screen, keys, etc)
@@ -141,8 +143,10 @@ public class PlayScreen implements Screen {
         }
         hud.update(dt);
 
-
-        gamecam.position.x = player.b2body.getPosition().x;
+        //attach our gamecam to our players.x coordinate
+        if(player.currentState != Barbie.State.DEAD) {
+            gamecam.position.x = player.b2body.getPosition().x;
+        }
         //update the gamecam with correct cordinates after change
          gamecam.update();
          renderer.setView(gamecam);  //only render what our gamecam can see

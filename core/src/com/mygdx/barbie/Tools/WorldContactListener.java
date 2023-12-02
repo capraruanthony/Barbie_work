@@ -21,6 +21,7 @@ public class WorldContactListener implements ContactListener {
         Fixture fixA = contact.getFixtureA();
         Fixture fixB = contact.getFixtureB();
 
+
         int cDef = fixA.getFilterData().categoryBits | fixB.getFilterData().categoryBits;
 
         if(fixA.getUserData() == "head" || fixB.getUserData() == "head"){
@@ -45,7 +46,10 @@ public class WorldContactListener implements ContactListener {
                     ((Enemy)fixB.getUserData()).reverseVelocity(true, false);
                 break;
             case BARBIE.BARBIE_BIT | BARBIE.ENEMY_BIT:
-                Gdx.app.log("Barbie", "died");
+                if(fixA.getFilterData().categoryBits == BARBIE.BARBIE_BIT && fixA.getUserData() != null) //fix this because it is not getting the user data correctly
+                    ((Barbie)fixA.getUserData()).hit();
+                else if(fixB.getFilterData().categoryBits == BARBIE.BARBIE_BIT && fixB.getUserData() != null) //fix this because it is not getting the user data correctly
+                    ((Barbie)fixB.getUserData()).hit();
                 break;
             case BARBIE.ENEMY_BIT | BARBIE.ENEMY_BIT:
                 ((Enemy)fixA.getUserData()).reverseVelocity(true, false);

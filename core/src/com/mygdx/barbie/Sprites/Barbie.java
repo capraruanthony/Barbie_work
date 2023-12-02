@@ -1,5 +1,7 @@
 package com.mygdx.barbie.Sprites;
 
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.Sprite;
@@ -9,6 +11,8 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.physics.box2d.Body;
 import com.badlogic.gdx.physics.box2d.BodyDef;
 import com.badlogic.gdx.physics.box2d.CircleShape;
+import com.badlogic.gdx.physics.box2d.Filter;
+import com.badlogic.gdx.physics.box2d.Fixture;
 import com.badlogic.gdx.physics.box2d.FixtureDef;
 import com.badlogic.gdx.physics.box2d.World;
 import com.badlogic.gdx.utils.Array;
@@ -17,18 +21,22 @@ import com.mygdx.barbie.BARBIE;
 import Screens.PlayScreen;
 
 public class Barbie extends Sprite {
-    public enum State { FALLING, JUMPING, STANDING, RUNNING };
+    public enum State { FALLING, JUMPING, STANDING, RUNNING, DEAD };
     public State currentState;
     public State previousState;
     public World world; //world that barbie will live in
     public Body b2body; //box2d
     private TextureRegion barbieStand;
+    private TextureRegion barbieDead;
     private Animation barbieRun;
     private Animation barbieJump;
     private float stateTimer; //see how long you in a state
     private boolean runningRight;
 
     private boolean canJump;
+
+    private boolean isAlive = true;
+    private boolean barbieIsDead;
 
 
 
@@ -49,6 +57,10 @@ public class Barbie extends Sprite {
         frames.add(new TextureRegion(getTexture(), 23,  27, 22, 33)); //fix this first two points is the start
         // of the top left of the image then the other two go to the bottom right of the image
         barbieJump = new Animation(0.2f, frames);
+        frames.clear();
+
+        barbieDead = new TextureRegion(screen.getAtlas().findRegion("barbie_newsize"), 46 , 26 , 21 , 33); //fix this to put barbie just standing on the screen without animations
+
 
         barbieStand = new TextureRegion(getTexture(), 46 , 26 , 21 , 33); //fix this to put barbie just standing on the screen without animations
         defineBarbie();
@@ -56,6 +68,8 @@ public class Barbie extends Sprite {
         setRegion(barbieStand);
 
         canJump = true;
+
+
     }
     public boolean canJump() {
         return canJump;
@@ -78,6 +92,9 @@ public class Barbie extends Sprite {
         TextureRegion region;
 
         switch (currentState){
+            case DEAD:
+                region = barbieDead;
+                break;
             case JUMPING:
                 region = (TextureRegion) barbieJump.getKeyFrame(stateTimer);
                 break;
@@ -104,7 +121,9 @@ public class Barbie extends Sprite {
     }
 
     public State getState(){
-        if (b2body.getLinearVelocity().y > 0 || (b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING))
+        if(barbieIsDead)
+            return  State.DEAD;
+        else if (b2body.getLinearVelocity().y > 0 || (b2body.getLinearVelocity().y < 0 && previousState == State.JUMPING))
             return State.JUMPING;
         else if (b2body.getLinearVelocity().y < 0)
             return State.FALLING;
@@ -114,6 +133,21 @@ public class Barbie extends Sprite {
             return  State.STANDING;
 
     }
+
+
+
+    public void hit(){
+        Gdx.app.log("contact", "hit");
+        BARBIE.manager.get("barbiedie.wav", Sound.class).play();
+        barbieIsDead = true;
+        Filter filter = new Filter();
+        filter.maskBits = BARBIE.NOTHING_BIT;
+        for (Fixture fixture : b2body.getFixtureList()) {
+            fixture.setFilterData(filter);
+        }
+
+        }
+
     public void defineBarbie() {
         BodyDef bdef = new BodyDef();
         bdef.position.set(32 / BARBIE.PPM, 50 / BARBIE.PPM);
@@ -132,8 +166,11 @@ public class Barbie extends Sprite {
 
         fdef.shape = shape;
         b2body.createFixture(fdef);
+        Fixture fixture = b2body.createFixture(fdef);
+        fixture.setUserData(this); // 'this' refers to the current instance of Barbie
 
     }
+
 }
 
 

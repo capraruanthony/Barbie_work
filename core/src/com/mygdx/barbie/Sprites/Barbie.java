@@ -135,7 +135,13 @@ public class Barbie extends Sprite {
     }
 
 
+    public boolean isDead(){
+        return barbieIsDead;
+    }
 
+    public float getStateTimer(){
+        return stateTimer;
+    }
     public void hit(){
         Gdx.app.log("contact", "hit");
         BARBIE.manager.get("barbiedie.wav", Sound.class).play();

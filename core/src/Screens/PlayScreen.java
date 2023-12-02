@@ -181,8 +181,19 @@ public class PlayScreen implements Screen {
         // Set the projection matrix of the game batch to that of the HUD's camera
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
+
+        if(gameOver()){
+            game.setScreen(new GameOverScreen(game));
+            dispose();
+        }
     }
 
+    public boolean gameOver(){
+        if(player.currentState == Barbie.State.DEAD && player.getStateTimer() > 3){
+            return true;
+        }
+        return false;
+    }
     @Override
     public void resize(int width, int height) {
         gamePort.update(width,height); // Update the gamePort to handle screen resizing

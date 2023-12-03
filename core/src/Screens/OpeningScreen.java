@@ -30,6 +30,9 @@ public class OpeningScreen implements Screen {
     private float exitButtonWidth;
     private float exitButtonHeight;
 
+    private float helpScreenWidth;
+    private float helpScreenHeight;
+
     public OpeningScreen(BARBIE game) {
         this.game = game;
         batch = new SpriteBatch();
@@ -40,12 +43,12 @@ public class OpeningScreen implements Screen {
         exitButtonTexture = new Texture(Gdx.files.internal("exit_button.png"));
 
         // Sizing and positions of help and exit help buttons
-        howToPlayButtonWidth = Gdx.graphics.getWidth() / 10; //adjust dims
-        howToPlayButtonHeight = Gdx.graphics.getHeight() / 4;
+        howToPlayButtonWidth = Gdx.graphics.getWidth() / 10; //adjust dims was 10
+        howToPlayButtonHeight = Gdx.graphics.getHeight() / 4; // was 4
         howToPlayButtonX = Gdx.graphics.getWidth()  - howToPlayButtonWidth - 20; //positions to adjust
         howToPlayButtonY = Gdx.graphics.getHeight() - howToPlayButtonHeight - 20;
 
-        exitButtonWidth = Gdx.graphics.getWidth() / 4; //was 4: adjusted size
+        exitButtonWidth = Gdx.graphics.getWidth() / 8; //was 4: adjusted size
         exitButtonHeight = Gdx.graphics.getHeight() / 8; // was 8
         exitButtonX = Gdx.graphics.getWidth() - exitButtonWidth; //coordinates of exit button
         exitButtonY = Gdx.graphics.getHeight() - exitButtonHeight;
@@ -69,11 +72,15 @@ public class OpeningScreen implements Screen {
         float buttonHeight = Gdx.graphics.getHeight() / 1;
         float buttonX = Gdx.graphics.getWidth() / 2 - buttonWidth / 2;
         float buttonY = Gdx.graphics.getHeight() / 2 - buttonHeight / 2 - 20;
+        //float helpScreenX = (Gdx.graphics.getWidth() - helpScreenTexture.getWidth()) / 2;// to center the help screen
+
+        float helpScreenX = (Gdx.graphics.getWidth() - helpScreenTexture.getWidth()) / 2f; //float
+        //float helpScreenY = (Gdx.graphics.getHeight() - helpScreenTexture.getHeight()) / 2f;
 
         // Check if the help screen is open
         if (isHelpScreenOpen) {
             // Draw the help screen
-            batch.draw(helpScreenTexture, 0, 0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+            batch.draw(helpScreenTexture, helpScreenX-350, 0, Gdx.graphics.getWidth() / 2 , Gdx.graphics.getHeight());
 
             // Show exit button for the help screen
             batch.draw(exitButtonTexture, exitButtonX, exitButtonY, exitButtonWidth, exitButtonHeight);

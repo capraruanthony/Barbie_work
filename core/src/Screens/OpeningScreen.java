@@ -48,10 +48,10 @@ public class OpeningScreen implements Screen {
         howToPlayButtonX = Gdx.graphics.getWidth()  - howToPlayButtonWidth - 20; //positions to adjust
         howToPlayButtonY = Gdx.graphics.getHeight() - howToPlayButtonHeight - 20;
 
-        exitButtonWidth = Gdx.graphics.getWidth() / 8; //was 4: adjusted size
-        exitButtonHeight = Gdx.graphics.getHeight() / 8; // was 8
-        exitButtonX = Gdx.graphics.getWidth() - exitButtonWidth; //coordinates of exit button
-        exitButtonY = Gdx.graphics.getHeight() - exitButtonHeight;
+        exitButtonWidth = Gdx.graphics.getWidth() / 9; //was 4: adjusted size
+        exitButtonHeight = Gdx.graphics.getHeight() / 9; // was 8
+        exitButtonX = Gdx.graphics.getWidth() - exitButtonWidth - 20; //coordinates of exit button
+        exitButtonY = Gdx.graphics.getHeight() - exitButtonHeight - 20;
     }
 
     @Override

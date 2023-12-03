@@ -65,6 +65,9 @@ public class PlayScreen implements Screen {
     private Snowman snowman;
     private Array<Snowman> snowmen;
 
+    private boolean hasPlayerReachedEnd = false; // New variable to track win condition
+
+
 
     // Constructor for initializing the PlayScreen
     public PlayScreen(BARBIE game){
@@ -143,6 +146,11 @@ public class PlayScreen implements Screen {
         }
         hud.update(dt);
 
+        // Check if the player has reached the end of the map
+        if (player.b2body.getPosition().x >= 3800 / BARBIE.PPM) {
+            hasPlayerReachedEnd = true;
+        }
+
         //attach our gamecam to our players.x coordinate
         if(player.currentState != Barbie.State.DEAD) {
             gamecam.position.x = player.b2body.getPosition().x;
@@ -182,7 +190,11 @@ public class PlayScreen implements Screen {
         game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
         hud.stage.draw();
 
-        if(gameOver()){
+        // Check if the player has reached the end of the map
+        if (hasPlayerReachedEnd) {
+            game.setScreen(new WinScreen(game));
+            dispose();
+        }else if(gameOver()){
             game.setScreen(new GameOverScreen(game));
             dispose();
         }

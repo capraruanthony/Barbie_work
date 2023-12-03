@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="83">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="240" height="13" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="88">
  <tileset firstgid="1" source="Custom Edited - Mario Customs - Super Mario Bros Tiles New Super Mario Bros-Style.tsx"/>
  <layer id="2" name="graphics" width="240" height="13">
   <data encoding="base64" compression="zlib">
@@ -30,6 +30,12 @@
   <object id="50" x="2153.66" y="154.94"/>
   <object id="51" x="2170.07" y="138.99"/>
   <object id="52" x="2129.51" y="161.32" width="61.0645" height="15.494"/>
+ </objectgroup>
+ <objectgroup id="8" name="snowmen">
+  <object id="83" x="623.5" y="159.5" width="15.75" height="16.25"/>
+  <object id="84" x="1423.67" y="159.333" width="16.6667" height="16.3333"/>
+  <object id="85" x="1983.33" y="160" width="16.6667" height="14.6667"/>
+  <object id="87" x="2719" y="159.333" width="17.6667" height="15.6667"/>
  </objectgroup>
  <objectgroup id="4" name="coins"/>
  <objectgroup id="5" name="ground">

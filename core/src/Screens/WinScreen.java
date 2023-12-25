@@ -42,6 +42,11 @@ public class WinScreen implements Screen {
         batch.begin();
         batch.draw(winImage, 0, 0, BARBIE.V_WIDTH, BARBIE.V_HEIGHT);
         batch.end();
+
+        if(Gdx.input.justTouched()){
+            game.setScreen(new PlayScreen(game));
+            //dispose();
+        }
     }
 
     @Override
